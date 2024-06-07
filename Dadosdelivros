@@ -1,0 +1,73 @@
+#Lista de livros
+lista_livro = []
+#Variável para o ID dos livros
+id_global = 0
+
+#Função para cadastrar um livro
+def cadastrar_livro(id):
+    global id_global
+    id_global += 1
+    nome = input("Digite o nome do livro: ")
+    autor = input("Digite o autor do livro: ")
+    editora = input("Digite a editora do livro: ")
+    livro = {'id': id, 'nome': nome, 'autor': autor, 'editora': editora}
+    lista_livro.append(livro)
+    print("Livro cadastrado com sucesso!")
+
+#Função para consultar livros
+def consultar_livro():
+    while True:
+        print("1. Consultar Todos\n2. Consultar por Id\n3. Consultar por Autor\n4. Retornar ao menu")
+        opcao = input("Escolha uma opção: ")
+        if opcao == '1':  #Consulta todos
+            for livro in lista_livro:
+                print(livro)
+        elif opcao == '2':  #Consultar por ID
+            id_consulta = int(input("Digite o ID do livro: "))
+            for livro in lista_livro:
+                if livro['id'] == id_consulta:
+                    print(livro)
+                    break
+            else:
+                print("Livro não encontrado.")
+        elif opcao == '3':  #Consultar por Autor
+            autor_consulta = input("Digite o nome do autor: ")
+            for livro in lista_livro:
+                if livro['autor'].lower() == autor_consulta.lower():
+                    print(livro)
+        elif opcao == '4':  #Retorna ao menu
+            break
+        else:
+            print("Opção inválida")
+
+# Função para remover um livro
+def remover_livro():
+    id_remover = int(input("Digite o ID do livro a ser removido: "))
+    for livro in lista_livro:
+        if livro['id'] == id_remover:
+            lista_livro.remove(livro)
+            print("Livro removido com sucesso!")
+            break
+    else:
+        print("ID inválido")
+
+#Menu
+def menu():
+    print("Bem-vindo(a) a Livraria da Marcelle Tiemi Suzuki Andriollo")
+    while True:
+        print("\n1. Cadastrar Livro\n2. Consultar Livro\n3. Remover Livro\n4. Encerrar Programa")
+        opcao = input("Escolha uma opção: ")
+        if opcao == '1':  #Cadastrar Livro
+            cadastrar_livro(id_global)
+        elif opcao == '2':  #Consultar Livro
+            consultar_livro()
+        elif opcao == '3':  #Remover Livro
+            remover_livro()
+        elif opcao == '4':  #Encerrar Programa
+            print("Encerrando o programa...")
+            break
+        else:
+            print("Opção inválida")
+
+if __name__ == "__main__":
+    menu()
