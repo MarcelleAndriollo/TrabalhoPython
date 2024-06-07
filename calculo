@@ -1,0 +1,23 @@
+Nome = "Bem-vindo(a) a loja da Marcelle Tiemi Suzuki Andriollo" #definição da variável nome
+print(Nome)
+
+#Solicitando valores e quantidades
+Valorprod = float(input("Insira o valor do produto"))
+Quantprod = float(input("Insira a quantide do produto"))
+
+#cálculo dos descontos
+Valordescont1 = Valorprod * Quantprod
+Desconto1 = Valordescont1 * (4 / 100)
+Desconto2 = Valordescont1 * (7 / 100)
+Desconto3 = Valordescont1 * (11 / 100)
+
+#Aplicação dos descontos
+print(f"Valor do produto sem desconto: {Valordescont1}")
+if Valordescont1 <= 2499:
+   print(f"Esta compra não está apta para o desconto")
+elif Valordescont1 >= 2500 and Valordescont1 <= 5999:
+  print(f"Valor com desconto", Valordescont1 - Desconto1)
+elif Valordescont1 >= 6000 and Valordescont1 <= 9999:
+  print(f"Valor com desconto", Valordescont1 - Desconto2)
+else:
+  print(f"Valor com desconto", Valordescont1 - Desconto3)
